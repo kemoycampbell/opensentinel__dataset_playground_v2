@@ -1,0 +1,12 @@
+For each model that we are testing:
+ -  Run the terraform to init and create the bucket
+ -  run the open sentinel system
+ -  Try these manual actions 1 at a time to see if the system detects and create PR for them:
+    - Enable buccket versioning
+    - Enable bucket logging
+    - Change default encryption from AES256 to aws:kms
+    - Change bucket BucketOwnerPreferred → ObjectWriter
+ - Try to perform a  Relationship & Attachment drift
+     - attach a bucket policy to the bucket
+     - change bucket policy to reference:
+        - a different principal
