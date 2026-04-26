@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "instance_type" {
-  default     = "t3.micro"
+  default     = "t3.small"
   type        = string
   description = "The type of EC2 instance to use."
 }
