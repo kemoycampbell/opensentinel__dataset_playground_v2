@@ -10,12 +10,6 @@ variable "instance_type" {
   description = "The type of EC2 instance to use."
 }
 
-variable "use_localstack" {
-  default     = true
-  type        = bool
-  description = "Whether to use LocalStack for testing."
-}
-
 variable "tag" {
   default     = "OpenIACSentinel"
   type        = string
