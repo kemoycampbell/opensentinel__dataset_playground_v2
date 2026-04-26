@@ -5,15 +5,9 @@ variable "region" {
 }
 
 variable "instance_type" {
-  default     = "t2.micro"
+  default     = "t3.small"
   type        = string
   description = "The type of EC2 instance to use."
-}
-
-variable "use_localstack" {
-  default     = true
-  type        = bool
-  description = "Whether to use LocalStack for testing."
 }
 
 variable "tag" {
