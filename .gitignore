@@ -5,3 +5,4 @@ terraform.tfstate.backup
 .terraform.lock.hcl
 
 _credentials.auto.tfvars
+tfplan_detect
