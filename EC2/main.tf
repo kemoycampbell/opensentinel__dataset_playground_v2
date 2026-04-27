@@ -24,7 +24,6 @@ data "aws_ami" "aws" {
 }
 
 
-
 resource "aws_instance" "example" {
   ami           = data.aws_ami.aws.id
   instance_type = var.instance_type
