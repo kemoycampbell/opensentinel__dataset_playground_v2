@@ -1,0 +1,51 @@
+# Use an official Ubuntu image as a base image
+FROM ubuntu:latest
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    apache2 \
+    php \
+    php-mysql \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    wget \
+    unzip \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    
+# Enable Apache mods
+RUN a2enmod rewrite
+
+# Set the ServerName directive in Apache configuration
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+# Install PHP extensions (like GD and MySQLi)
+RUN apt-get update && apt-get install -y \
+    php-gd \
+    php-mysqli \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Download and extract WordPress
+RUN wget https://wordpress.org/latest.zip && \
+    unzip latest.zip && \
+    mv wordpress/* /var/www/html/ && \
+    rm -rf wordpress latest.zip
+
+# Set up proper ownership for WordPress files
+RUN chown -R www-data:www-data /var/www/html
+
+# Configure WordPress to connect to MySQL - Fill in missing values
+RUN cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php && \
+    sed -i "s/database_name_here/blog/" /var/www/html/wp-config.php && \
+    sed -i "s/username_here/wp_user/" /var/www/html/wp-config.php && \
+    sed -i "s/password_here/wordpress/" /var/www/html/wp-config.php && \
+    sed -i "s/localhost/mysql/" /var/www/html/wp-config.php
+
+# Remove default index.html(so it doesnt show the default apache page and hit wordpress's index.php instead)
+RUN rm /var/www/html/index.html
+
+# Expose Apache's port
+EXPOSE 80
+
+# Start Apache in the foreground
+CMD ["apachectl", "-D", "FOREGROUND"]

@@ -1,0 +1,10 @@
+# Use the official MySQL image
+FROM mysql:latest
+
+# Environment variables for MySQL root password and database configuration
+ENV MYSQL_ROOT_PASSWORD=rootpassword
+ENV MYSQL_DATABASE=blog
+ENV MYSQL_USER=wp_user
+ENV MYSQL_PASSWORD=wordpress
+
+EXPOSE 3306

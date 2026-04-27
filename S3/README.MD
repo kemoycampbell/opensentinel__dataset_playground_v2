@@ -3,9 +3,4 @@ For each model that we are testing:
  -  run the open sentinel system
  -  Try these manual actions 1 at a time to see if the system detects and create PR for them:
     - Enable buccket versioning
-    - Change default encryption to SSE-KMS
-    - Change bucket BucketOwnerPreferred → ObjectWriter
- - Try to perform a  Relationship & Attachment drift
-     - attach a bucket policy to the bucket
-     - change bucket policy to reference:
-        - a different principal
+    - Change default encryption to use bucket key
