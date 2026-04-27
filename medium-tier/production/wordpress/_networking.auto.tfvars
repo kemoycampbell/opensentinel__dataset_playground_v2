@@ -34,7 +34,7 @@ network = {
 
   ec2_security_group = {
     name        = "OpenIACSentinel"
-    description = "Security group for WordPress EC2 instance"
+    description = "Security group for WordPress EC2 instance and MySQL 3306"
 
     ingress_rules = {
       http = {
