@@ -50,6 +50,13 @@ network = {
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
       }
+
+      port_5555 = {
+        from_port   = 5555
+        to_port     = 5555
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
     }
 
     egress_rules = {
