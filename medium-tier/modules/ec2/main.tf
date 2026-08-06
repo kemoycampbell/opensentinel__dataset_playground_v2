@@ -6,5 +6,5 @@ resource "aws_instance" "this" {
   vpc_security_group_ids = var.ec2_config.vpc_security_group_ids
   tags                   = var.ec2_config.tags
   user_data              = var.ec2_config.user_data
+  disable_api_termination = true
 }
-
