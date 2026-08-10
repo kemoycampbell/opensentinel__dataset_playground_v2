@@ -5,4 +5,8 @@ resource "aws_s3_bucket" "example" {
     Name        = "OpenSentinel"
     Environment = "Dev"
   }
+
+  versioning {
+    enabled = true
+  }
 }
